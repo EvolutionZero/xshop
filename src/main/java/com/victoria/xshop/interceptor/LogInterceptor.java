@@ -69,8 +69,8 @@ public class LogInterceptor implements HandlerInterceptor {
         }
         if(header.length() > 1){
             header.delete(header.length() - 1 , header.length());
+            LOGGER.info("[{}]vistor request header:\n{}", uuid, header.toString());
         }
-        LOGGER.info("[{}]vistor request header:\n{}", uuid, header.toString());
 
         Enumeration paramNames = request.getParameterNames();
         StringBuilder params = new StringBuilder();
@@ -82,8 +82,8 @@ public class LogInterceptor implements HandlerInterceptor {
         }
         if(params.length() > 1){
             params.delete(params.length() - 1 , params.length());
+            LOGGER.info("[{}]vistor request params:\n{}", uuid, params.toString());
         }
-        LOGGER.info("[{}]vistor request params:\n{}", uuid, params.toString());
 
         return uuid;
     }

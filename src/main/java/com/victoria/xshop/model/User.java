@@ -2,14 +2,13 @@
  * @ClassName User
  * @Description 
  * @version 1.0
- * @Date 2018-06-27 23:21:14
+ * @String 2018-06-27 23:21:14
  */
 package com.victoria.xshop.model;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 
 @Repository
 @Mapper
@@ -29,19 +28,19 @@ public class User {
     /**
      * @Fields gender 
      */
-    private Boolean gender;
+    private Integer gender;
     /**
      * @Fields birthday 
      */
-    private Date birthday;
+    private String birthday;
     /**
      * @Fields registerTime 
      */
-    private Integer registerTime;
+    private String registerTime;
     /**
      * @Fields lastLoginTime 
      */
-    private Integer lastLoginTime;
+    private String lastLoginTime;
     /**
      * @Fields lastLoginIp 
      */
@@ -49,7 +48,7 @@ public class User {
     /**
      * @Fields userAuthId 
      */
-    private Byte userAuthId;
+    private Integer userAuthId;
     /**
      * @Fields nickname 
      */
@@ -95,35 +94,35 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Boolean getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Integer getRegisterTime() {
+    public String getRegisterTime() {
         return registerTime;
     }
 
-    public void setRegisterTime(Integer registerTime) {
+    public void setRegisterTime(String registerTime) {
         this.registerTime = registerTime;
     }
 
-    public Integer getLastLoginTime() {
+    public String getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Integer lastLoginTime) {
+    public void setLastLoginTime(String lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
@@ -135,11 +134,11 @@ public class User {
         this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public Byte getUserAuthId() {
+    public Integer getUserAuthId() {
         return userAuthId;
     }
 
-    public void setUserAuthId(Byte userAuthId) {
+    public void setUserAuthId(Integer userAuthId) {
         this.userAuthId = userAuthId;
     }
 

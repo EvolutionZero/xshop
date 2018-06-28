@@ -1,5 +1,11 @@
 server:
   port: 8080
+  tomcat:
+    accesslog:
+      enabled: true
+      pattern: "%t %a \"%r\" %s %S (%D ms)"
+
+
 
 spring:
     datasource:
@@ -26,4 +32,6 @@ pagehelper:
 
 logging:
   config: classpath:logback.xml
-
+  pattern:
+    console: "%t %a \"%r\" %s %S (%D ms)"
+  file: /log/tomcat_access.log

@@ -1,0 +1,16 @@
+{
+  "id": null,
+  "username": "zero",
+  "password": "123qwe",
+  "gender": 1,
+  "birthday":  "2018-06-28",
+  "registerTime": "2018-06-28 10:00:00",
+  "lastLoginTime": "2018-06-28 10:00:00",
+  "lastLoginIp": "127.0.0.1",
+  "userAuthId": 1,
+  "nickname": "zzzzzzero",
+  "mobile": "18825000000",
+  "email": "12345@qq.com",
+  "registerIp": "127.0.0.1",
+  "weixinOpenid": "weixin231"
+}

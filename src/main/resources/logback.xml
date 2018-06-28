@@ -111,7 +111,7 @@
     </logger>
 
     <!-- mybatis3.2.3,配置自己的mapepr类的路径  -->
-    <logger name="com.example.ssm.dao" level="debug">
+    <logger name="com.victoria.xshop.dao" level="debug">
         <appender-ref ref="mybatis"/>
     </logger>
 
