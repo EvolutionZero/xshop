@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <property name="CHARSET" value="utf-8"/><!-- 字符集 -->
+    <property name="LOG_HOME" value="log"/><!-- log目录 -->
+    <property name="BACKUP" value="${LOG_HOME}/%d{yyyy-MM-dd}"/><!--
+		日志备份目录 -->
+    <!-- 日志输出格式 类路径c 行号l 方法名m 尽量避免使用 -->
+    <!-- 日志输出格式, %c{0} 表示打印logger名，若logger名是一个类路径，则打印最后一个.右边的部分 -->
+    <property name="PATTERN_DEF"
+              value="[%d{yyyy-MM-dd HH:mm:ss SSS}] [%-5p] [%c{-10}] - %m%n"/>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 这里不需要配置字符集，根据系统默认即可 <charset>${CHARSET}</charset> -->
+            <pattern>${PATTERN_DEF}</pattern>
+        </encoder>
+        <target>System.out</target><!-- System.out|System.err -->
+    </appender>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 全局日志 -->
+    <appender name="file_log"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BACKUP}/log%d{yyyy-MM-dd}-%i.log.zip
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>64MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${PATTERN_DEF}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="access"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BACKUP}/access%d{yyyy-MM-dd}-%i.log.zip
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>64MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${PATTERN_DEF}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异常日志 -->
+    <appender name="file_exception"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/exception.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch> <!-- 用于配置符合过滤条件的操 NEUTRAL中立 ACCEPT接受 DENY否定 -->
+            <onMismatch>DENY</onMismatch> <!-- 用于配置符合过滤条件的操 -->
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BACKUP}/exception%d{yyyy-MM-dd}-%i.log.zip
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>64MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${PATTERN_DEF}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- mybatis日志 -->
+    <appender name="mybatis"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/mybatis.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BACKUP}/mybatis%d{yyyy-MM-dd}-%i.log.zip
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>64MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>${CHARSET}</charset>
+            <pattern>${PATTERN_DEF}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="access" level="debug">
+        <appender-ref ref="access"/>
+    </logger>
+
+    <!-- mybatis3.2.3,配置自己的mapepr类的路径  -->
+    <logger name="com.example.ssm.dao" level="debug">
+        <appender-ref ref="mybatis"/>
+    </logger>
+
+
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="file_log"/>
+        <appender-ref ref="file_exception"/>
+    </root>
+
+</configuration>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.victoria.xshop.dao.UserDao" >
+
+    <resultMap id="UserBaseResultMap" type="com.victoria.xshop.model.User" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="BIT" />
+        <result column="birthday" property="birthday" jdbcType="DATE" />
+        <result column="register_time" property="registerTime" jdbcType="INTEGER" />
+        <result column="last_login_time" property="lastLoginTime" jdbcType="INTEGER" />
+        <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+        <result column="user_auth_id" property="userAuthId" jdbcType="TINYINT" />
+        <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="register_ip" property="registerIp" jdbcType="VARCHAR" />
+        <result column="weixin_openid" property="weixinOpenid" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="User_Base_Column_List" >
+        id, username, password, gender, birthday, register_time, last_login_time, last_login_ip, 
+        user_auth_id, nickname, mobile, email, register_ip, weixin_openid
+    </sql>
+
+    <select id="selectUserByPrimaryKey" resultMap="UserBaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="User_Base_Column_List" />
+        from xshop_user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteUserByPrimaryKey" parameterType="java.lang.Long" >
+        delete from xshop_user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insertUserSelective" parameterType="com.victoria.xshop.model.User" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into xshop_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                username,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="birthday != null" >
+                birthday,
+            </if>
+            <if test="registerTime != null" >
+                register_time,
+            </if>
+            <if test="lastLoginTime != null" >
+                last_login_time,
+            </if>
+            <if test="lastLoginIp != null" >
+                last_login_ip,
+            </if>
+            <if test="userAuthId != null" >
+                user_auth_id,
+            </if>
+            <if test="nickname != null" >
+                nickname,
+            </if>
+            <if test="mobile != null" >
+                mobile,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="registerIp != null" >
+                register_ip,
+            </if>
+            <if test="weixinOpenid != null" >
+                weixin_openid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=BIT},
+            </if>
+            <if test="birthday != null" >
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="registerTime != null" >
+                #{registerTime,jdbcType=INTEGER},
+            </if>
+            <if test="lastLoginTime != null" >
+                #{lastLoginTime,jdbcType=INTEGER},
+            </if>
+            <if test="lastLoginIp != null" >
+                #{lastLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="userAuthId != null" >
+                #{userAuthId,jdbcType=TINYINT},
+            </if>
+            <if test="nickname != null" >
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="registerIp != null" >
+                #{registerIp,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinOpenid != null" >
+                #{weixinOpenid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateUserByPrimaryKeySelective" parameterType="com.victoria.xshop.model.User" >
+        update xshop_user
+        <set >
+            <if test="username != null" >
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=BIT},
+            </if>
+            <if test="birthday != null" >
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="registerTime != null" >
+                register_time = #{registerTime,jdbcType=INTEGER},
+            </if>
+            <if test="lastLoginTime != null" >
+                last_login_time = #{lastLoginTime,jdbcType=INTEGER},
+            </if>
+            <if test="lastLoginIp != null" >
+                last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="userAuthId != null" >
+                user_auth_id = #{userAuthId,jdbcType=TINYINT},
+            </if>
+            <if test="nickname != null" >
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null" >
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="registerIp != null" >
+                register_ip = #{registerIp,jdbcType=VARCHAR},
+            </if>
+            <if test="weixinOpenid != null" >
+                weixin_openid = #{weixinOpenid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

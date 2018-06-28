@@ -1,0 +1,12 @@
+{
+  "id":null,
+  "name":"home",
+  "userId":1,
+  "countryId":1,
+  "provinceId":20,
+  "cityId":231,
+  "districtId":2389,
+  "address":"Nanzhou Garden Zone A",
+  "mobile":"18825000000",
+  "isDefault":0
+}
