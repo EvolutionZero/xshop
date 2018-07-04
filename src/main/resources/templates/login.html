@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<body>
+<!--
+<form id="signupForm" action="/login.do">
+    <h4 class="no-margins">登录：</h4>
+    <p class="m-t-md">若依出品必属精品</p>
+    <input type="text"     name="username" class="form-control uname"     placeholder="用户名" value="admin"    />
+    <input type="password" name="password" class="form-control pword m-b" placeholder="密码"   value="admin123" />
+    <a href="#">忘记密码了？</a>
+    <submit>登陆</submit>
+    <button class="btn btn-success btn-block">登录</button>
+</form>
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form class="form-horizontal" action="/userLogin.do">
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" id="inputEmail3" placeholder="电子邮件">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="密码">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                <div class="form-group">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">记住我</span>
+                    <button type="submit" class="btn btn-default">立刻登录</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

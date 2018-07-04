@@ -1,4 +1,4 @@
-package com.victoria.xshop.config;
+package com.victoria.xshop.framework.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
