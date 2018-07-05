@@ -1,6 +1,7 @@
 package com.victoria.xshop.controller;
 
 
+import com.victoria.xshop.framework.aspectj.lang.annotation.SysLog;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -23,6 +24,7 @@ public class LoginController {
 
 
     @RequestMapping(value="/userLogin.do")
+    @SysLog(action = "用户" , title = "登录")
     public String userLogin(String username, String password){
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();

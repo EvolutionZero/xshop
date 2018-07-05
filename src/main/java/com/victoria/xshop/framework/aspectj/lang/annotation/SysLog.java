@@ -1,4 +1,4 @@
-package com.victoria.xshop.framework.annotation;
+package com.victoria.xshop.framework.aspectj.lang.annotation;
 
 import java.lang.annotation.*;
 

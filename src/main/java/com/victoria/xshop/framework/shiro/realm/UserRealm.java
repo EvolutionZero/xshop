@@ -1,5 +1,6 @@
 package com.victoria.xshop.framework.shiro.realm;
 
+import com.victoria.xshop.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -61,7 +62,10 @@ public class UserRealm extends AuthorizingRealm
         }
 
         if("xero1993".equals(username) && "123456".equals(password)){
-            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
+            User user = new User();
+            user.setUsername("xero1993");
+            user.setPassword("123456");
+            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
             return info;
         } else {
             throw new AuthenticationException();
