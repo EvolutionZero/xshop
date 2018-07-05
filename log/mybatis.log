@@ -1,0 +1,22 @@
+[2018-07-06 00:00:22 007] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==>  Preparing: select * from common_user where username = ? and password = ? 
+[2018-07-06 00:00:22 018] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==> Parameters: xero(String), xero(String)
+[2018-07-06 00:00:22 033] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - <==      Total: 1
+[2018-07-06 00:00:22 033] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==>  Preparing: update common_user set last_login_time = now(), last_login_ip = ? where id = ? 
+[2018-07-06 00:00:22 033] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==> Parameters: 0:0:0:0:0:0:0:1(String), 3(Long)
+[2018-07-06 00:00:22 033] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - <==    Updates: 1
+[2018-07-06 00:03:38 745] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==>  Preparing: select * from common_user where username = ? and password = ? 
+[2018-07-06 00:03:38 763] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==> Parameters: xero(String), xero(String)
+[2018-07-06 00:03:38 774] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - <==      Total: 1
+[2018-07-06 00:03:38 778] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==>  Preparing: update common_user set last_login_time = now(), last_login_ip = ? where id = ? 
+[2018-07-06 00:03:38 778] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==> Parameters: 0:0:0:0:0:0:0:1(String), 3(Long)
+[2018-07-06 00:03:38 789] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - <==    Updates: 1
+[2018-07-06 00:03:49 785] [DEBUG] [com.victoria.xshop.project.user.dao.UserAddressDao.deleteById] - ==>  Preparing: delete from xshop_user_address where id = ? and user_id = ? 
+[2018-07-06 00:04:47 338] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==>  Preparing: select * from common_user where username = ? and password = ? 
+[2018-07-06 00:04:47 354] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - ==> Parameters: xero(String), xero(String)
+[2018-07-06 00:04:47 365] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.login] - <==      Total: 1
+[2018-07-06 00:04:47 369] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==>  Preparing: update common_user set last_login_time = now(), last_login_ip = ? where id = ? 
+[2018-07-06 00:04:47 369] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - ==> Parameters: 0:0:0:0:0:0:0:1(String), 3(Long)
+[2018-07-06 00:04:47 379] [DEBUG] [com.victoria.xshop.project.user.dao.UserDao.updateLoginInfo] - <==    Updates: 1
+[2018-07-06 00:04:51 005] [DEBUG] [com.victoria.xshop.project.user.dao.UserAddressDao.deleteById] - ==>  Preparing: delete from xshop_user_address where id = ? and user_id = ? 
+[2018-07-06 00:04:51 006] [DEBUG] [com.victoria.xshop.project.user.dao.UserAddressDao.deleteById] - ==> Parameters: 7(Long), 3(Long)
+[2018-07-06 00:04:51 012] [DEBUG] [com.victoria.xshop.project.user.dao.UserAddressDao.deleteById] - <==    Updates: 1

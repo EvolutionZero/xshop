@@ -22,7 +22,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/xshop?charset=utf8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/xshop?charset=utf8&serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
     username: root
     password: root
     # 初始化大小，最小，最大
