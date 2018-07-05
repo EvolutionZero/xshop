@@ -1,11 +1,9 @@
 package com.victoria.xshop.project.user.controller;
 
 
-import com.victoria.xshop.project.user.bean.po.User;
+import com.victoria.xshop.common.utils.security.ShiroUtils;
 import com.victoria.xshop.project.user.bean.po.UserAddress;
 import com.victoria.xshop.project.user.service.UserAddressService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +22,9 @@ public class UserAddressController {
     @PostMapping(value="/save.do")
     @ResponseBody
     public UserAddress save(@RequestBody  UserAddress userAddress){
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User)subject.getPrincipal();
-        if(user != null){
-            userAddress.setUserId(user.getId());
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            userAddress.setUserId(userId);
         }
         userAddressService.save(userAddress);
         return userAddress;
@@ -36,10 +33,9 @@ public class UserAddressController {
     @RequestMapping(value = "/update.do")
     @ResponseBody
     public String update(UserAddress userAddress){
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User)subject.getPrincipal();
-        if(user != null){
-            userAddress.setUserId(user.getId());
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            userAddress.setUserId(userId);
         }
         return userAddressService.updateById(userAddress) ? "ok" : "fail";
     }
@@ -47,16 +43,19 @@ public class UserAddressController {
     @RequestMapping(value="/find.do")
     @ResponseBody
     public UserAddress find(@RequestParam(value="id", defaultValue = "0") Long id){
-        return userAddressService.findById(id);
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            return userAddressService.findById(id, userId);
+        }
+        return new UserAddress();
     }
 
     @RequestMapping(value="/delete.do")
     @ResponseBody
     public String delete(@RequestParam(value="id", defaultValue = "0") Long id){
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User)subject.getPrincipal();
-        if(user != null){
-            return userAddressService.deleteById(id, user.getId()) ? "ok" : "fail";
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            return userAddressService.deleteById(id, userId) ? "ok" : "fail";
         }
         return "fail";
     }
@@ -64,10 +63,9 @@ public class UserAddressController {
     @RequestMapping(value="/findByUserId.do")
     @ResponseBody
     public List<UserAddress> findUserId(){
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User)subject.getPrincipal();
-        if(user != null){
-            return userAddressService.findByUserId(user.getId());
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            return userAddressService.findByUserId(userId);
         }
         return new LinkedList<>();
     }
@@ -75,10 +73,9 @@ public class UserAddressController {
     @RequestMapping(value="/updateDefaultAddress.do")
     @ResponseBody
     public String updateDefaultAddress(@RequestParam(value="id", defaultValue = "0") Long id){
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User)subject.getPrincipal();
-        if(user != null){
-            return userAddressService.updateDefaultAddress(user.getId(), id) ? "ok" : "fail";
+        Long userId = ShiroUtils.getUserId();
+        if(userId != null){
+            return userAddressService.updateDefaultAddress(userId, id) ? "ok" : "fail";
         }
         return "fail";
     }

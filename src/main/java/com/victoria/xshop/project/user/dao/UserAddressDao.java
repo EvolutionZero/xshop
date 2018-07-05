@@ -26,13 +26,6 @@ public interface UserAddressDao {
     int insertUserAddressSelective(UserAddress record);
 
     /**
-     * @param id
-     * @return UserAddress
-     * @Title selectUserAddressByPrimaryKey
-     */
-    UserAddress selectUserAddressByPrimaryKey(Long id);
-
-    /**
      * @param record
      * @return int
      * @Title updateUserAddressByPrimaryKeySelective
@@ -54,4 +47,8 @@ public interface UserAddressDao {
 
     @Delete("delete from xshop_user_address where id = #{id} and user_id = #{userId}")
     int deleteById(@Param(value = "id") Long id, @Param(value = "userId") Long userId);
+
+    @Select("select * from xshop_user_address where id = #{id} and user_id = #{userId}")
+    @ResultMap("com.victoria.xshop.project.user.dao.UserAddressDao.UserAddressBaseResultMap")
+    UserAddress findById(@Param(value = "id") Long id,@Param(value = "userId") Long userId);
 }

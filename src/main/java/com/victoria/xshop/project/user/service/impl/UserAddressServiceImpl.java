@@ -51,8 +51,8 @@ public class UserAddressServiceImpl implements UserAddressService {
     }
 
     @Override
-    public UserAddress findById(Long id){
-        return userAddressDao.selectUserAddressByPrimaryKey(id);
+    public UserAddress findById(Long id, Long userId){
+        return userAddressDao.findById(id, userId);
     }
 
     @Override

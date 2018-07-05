@@ -14,7 +14,7 @@ public interface UserAddressService {
 
     boolean updateById(UserAddress record);
 
-    UserAddress findById(Long id);
+    UserAddress findById(Long id, Long userId);
 
     List<UserAddress> findByUserId(Long userId);
 
