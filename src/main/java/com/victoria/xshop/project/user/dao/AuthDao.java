@@ -8,7 +8,11 @@ package com.victoria.xshop.project.user.dao;
 
 import com.victoria.xshop.project.user.bean.po.Auth;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.Set;
 
 @Repository
 @Mapper
@@ -54,4 +58,12 @@ public interface AuthDao {
      * @return int
      */
     int updateAuthByPrimaryKey(Auth record);
+
+    @Select(
+            "select perms from common_auth a"
+                    + " join common_role_auth ra on a.auth_id =  ra.auth_id"
+                    + " join common_user_role ur on ur.role_id = ra.role_id"
+                    + " where ur.user_id = #{id}"
+    )
+    Set<String> findAuthByUserId(@Param("id")Long id);
 }

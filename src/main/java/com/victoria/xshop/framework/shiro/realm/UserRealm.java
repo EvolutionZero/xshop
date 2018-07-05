@@ -1,6 +1,9 @@
 package com.victoria.xshop.framework.shiro.realm;
 
 import com.victoria.xshop.project.user.bean.po.User;
+import com.victoria.xshop.project.user.dao.AuthDao;
+import com.victoria.xshop.project.user.dao.RoleDao;
+import com.victoria.xshop.project.user.dao.UserDao;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -8,8 +11,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
 
 /**
  * 自定义Realm 处理登录 权限
@@ -20,26 +23,28 @@ import java.util.HashSet;
 public class UserRealm extends AuthorizingRealm
 {
 
+    @Autowired
+    private UserDao userDao;
 
+    @Autowired
+    private RoleDao roleDao;
+
+    @Autowired
+    private AuthDao authDao;
     /**
      * 授权
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0)
     {
-        String username = (String)SecurityUtils.getSubject().getPrincipal();
-        if("xero1993".equals(username)){
+        User user = (User)SecurityUtils.getSubject().getPrincipal();
+        if(user != null && user.getId() != null){
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             // 角色加入AuthorizationInfo认证对象
-            HashSet<String> roles = new HashSet<>();
-            HashSet<String> permissions = new HashSet<>();
-            roles.add("system");
-            permissions.add("system:read");
-            permissions.add("system:write");
 
-            info.setRoles(roles);
+            info.setRoles(roleDao.findRoleByUserId(user.getId()));
             // 权限加入AuthorizationInfo认证对象
-            info.setStringPermissions(permissions);
+            info.setStringPermissions(authDao.findAuthByUserId(user.getId()));
             return info;
 
         }
@@ -61,16 +66,13 @@ public class UserRealm extends AuthorizingRealm
             password = new String(upToken.getPassword());
         }
 
-        if("xero1993".equals(username) && "123456".equals(password)){
-            User user = new User();
-            user.setUsername("xero1993");
-            user.setPassword("123456");
-            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
+        User user = userDao.login(username, password);
+        if(user != null && user.getId() != null){
+            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
             return info;
         } else {
             throw new AuthenticationException();
         }
-
 
     }
 

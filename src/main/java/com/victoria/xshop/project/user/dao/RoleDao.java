@@ -1,6 +1,6 @@
 /*
  * @ClassName RoleDao
- * @Description 
+ * @Description
  * @version 1.0
  * @Date 2018-07-05 15:26:03
  */
@@ -8,50 +8,62 @@ package com.victoria.xshop.project.user.dao;
 
 import com.victoria.xshop.project.user.bean.po.Role;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.Set;
 
 @Repository
 @Mapper
 public interface RoleDao {
     /**
-     * @Title deleteRoleByPrimaryKey
      * @param roleId
      * @return int
+     * @Title deleteRoleByPrimaryKey
      */
     int deleteRoleByPrimaryKey(Integer roleId);
 
     /**
-     * @Title insertRole
      * @param record
      * @return int
+     * @Title insertRole
      */
     int insertRole(Role record);
 
     /**
-     * @Title insertRoleSelective
      * @param record
      * @return int
+     * @Title insertRoleSelective
      */
     int insertRoleSelective(Role record);
 
     /**
-     * @Title selectRoleByPrimaryKey
      * @param roleId
      * @return Role
+     * @Title selectRoleByPrimaryKey
      */
     Role selectRoleByPrimaryKey(Integer roleId);
 
     /**
-     * @Title updateRoleByPrimaryKeySelective
      * @param record
      * @return int
+     * @Title updateRoleByPrimaryKeySelective
      */
     int updateRoleByPrimaryKeySelective(Role record);
 
     /**
-     * @Title updateRoleByPrimaryKey
      * @param record
      * @return int
+     * @Title updateRoleByPrimaryKey
      */
     int updateRoleByPrimaryKey(Role record);
+
+    @Select(
+            "select role_key from common_role r"
+                    + " join common_user_role ur on r.role_id = ur.role_id"
+                    + " join common_user u on ur.user_id = u.id"
+                    + " where u.id = #{id}"
+    )
+    Set<String> findRoleByUserId(@Param("id")Long id);
 }

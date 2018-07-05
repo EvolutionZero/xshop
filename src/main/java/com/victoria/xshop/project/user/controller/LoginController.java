@@ -48,7 +48,7 @@ public class LoginController {
     }
 
     @GetMapping(value="/systemRead")
-    @RequiresPermissions({"system:read"})
+    @RequiresPermissions({"system:admin:perm-block"})
     @ResponseBody
     public String hasPermission(){
         return "ok";

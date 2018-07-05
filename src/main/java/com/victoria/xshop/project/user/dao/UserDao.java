@@ -8,6 +8,9 @@ package com.victoria.xshop.project.user.dao;
 
 import com.victoria.xshop.project.user.bean.po.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -54,4 +57,8 @@ public interface UserDao {
      * @return int
      */
     int updateUserByPrimaryKey(User record);
+
+    @Select("select * from common_user where username = #{username} and password = #{password}")
+    @ResultMap("com.victoria.xshop.project.user.dao.UserDao.UserBaseResultMap")
+    User login(@Param("username") String username, @Param("password") String password);
 }

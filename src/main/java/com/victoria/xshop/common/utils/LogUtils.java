@@ -126,7 +126,11 @@ public class LogUtils
 
     protected static String getUsername()
     {
-        return ((User) SecurityUtils.getSubject().getPrincipal()).getUsername();
+        Object principal = SecurityUtils.getSubject().getPrincipal();
+        if(principal == null){
+            return "";
+        }
+        return ((User) principal).getUsername();
     }
 
     public static Logger getAccessLog()
