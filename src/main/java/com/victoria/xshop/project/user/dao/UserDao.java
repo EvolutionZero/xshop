@@ -7,10 +7,7 @@
 package com.victoria.xshop.project.user.dao;
 
 import com.victoria.xshop.project.user.bean.po.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -61,4 +58,7 @@ public interface UserDao {
     @Select("select * from common_user where username = #{username} and password = #{password}")
     @ResultMap("com.victoria.xshop.project.user.dao.UserDao.UserBaseResultMap")
     User login(@Param("username") String username, @Param("password") String password);
+
+    @Update("update common_user set last_login_time = now(), last_login_ip = #{ip} where id = #{id}")
+    void updateLoginInfo(@Param("ip") String ip, @Param("id") Long id);
 }

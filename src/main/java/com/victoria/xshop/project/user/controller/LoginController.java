@@ -2,6 +2,7 @@ package com.victoria.xshop.project.user.controller;
 
 
 import com.victoria.xshop.framework.aspectj.lang.annotation.SysLog;
+import com.victoria.xshop.project.user.bean.po.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -21,6 +22,11 @@ public class LoginController {
 
     @GetMapping(value="/login")
     public String login(){
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User)subject.getPrincipal();
+        if(user != null){
+            return "index";
+        }
         return "login";
     }
 
@@ -28,12 +34,28 @@ public class LoginController {
     @RequestMapping(value="/userLogin.do")
     @SysLog(action = "用户" , title = "登录")
     public String userLogin(String username, String password){
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try
         {
             subject.login(token);
             return "index";
+        }
+        catch (AuthenticationException e)
+        {
+            return "fail";
+        }
+    }
+
+
+    @RequestMapping(value="/userLogout.do")
+    @SysLog(action = "用户" , title = "登录")
+    public String logout(String username, String password){
+        Subject subject = SecurityUtils.getSubject();
+        try
+        {
+            subject.logout();
+            return "login";
         }
         catch (AuthenticationException e)
         {

@@ -1,5 +1,7 @@
 package com.victoria.xshop.framework.shiro.realm;
 
+import com.victoria.xshop.common.utils.IpUtils;
+import com.victoria.xshop.common.utils.ServletUtils;
 import com.victoria.xshop.project.user.bean.po.User;
 import com.victoria.xshop.project.user.dao.AuthDao;
 import com.victoria.xshop.project.user.dao.RoleDao;
@@ -69,6 +71,7 @@ public class UserRealm extends AuthorizingRealm
         User user = userDao.login(username, password);
         if(user != null && user.getId() != null){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), getName());
+            userDao.updateLoginInfo(IpUtils.getIpAddr(ServletUtils.getHttpServletRequest()), user.getId());
             return info;
         } else {
             throw new AuthenticationException();
