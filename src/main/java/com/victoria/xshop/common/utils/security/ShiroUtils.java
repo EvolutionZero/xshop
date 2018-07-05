@@ -1,8 +1,8 @@
 package com.victoria.xshop.common.utils.security;
 
+import com.victoria.xshop.project.user.bean.po.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import com.victoria.xshop.project.user.model.User;
 
 /**
  * shiro 工具类

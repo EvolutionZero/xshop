@@ -1,24 +1,24 @@
 package com.victoria.xshop.common.tree;
 
+import com.victoria.xshop.project.user.bean.po.Region;
 import com.victoria.xshop.project.user.controller.LoginController;
-import  com.victoria.xshop.project.user.model.Region;
 
 import java.util.*;
 
 public class RegionTree {
 
-    private Set<LoginController.RegionNode> roots = new HashSet<>();
-    private List<LoginController.RegionNode> nodes = new LinkedList<>();
+    private Set<RegionNode> roots = new HashSet<>();
+    private List<RegionNode> nodes = new LinkedList<>();
 
     public RegionTree() {
     }
 
     public void add(Region region){
         // 初始化节点
-        LoginController.RegionNode regionNode = new LoginController.RegionNode(region);
+        RegionNode regionNode = new RegionNode(region);
 
         // 添加父子关系
-        for (LoginController.RegionNode node: nodes ) {
+        for (RegionNode node: nodes ) {
             if(node != null && region.getParentId() != null && node.getSelf() != null && region.getParentId().longValue() == node.getSelf().getId().longValue()){
                 regionNode.setParent(node);
                 node.getChilds().add(regionNode);
@@ -36,9 +36,9 @@ public class RegionTree {
         }
 
         // 重置根节点
-        Iterator<LoginController.RegionNode> iterator = roots.iterator();
+        Iterator<RegionNode> iterator = roots.iterator();
         while(iterator.hasNext()){
-            LoginController.RegionNode root = iterator.next();
+            RegionNode root = iterator.next();
             if(root.getParent() != null){
                 iterator.remove();
             }
@@ -48,7 +48,7 @@ public class RegionTree {
 
     public List<Map<String, Object>> printfTree(){
         List<Map<String, Object>> trees = new LinkedList<>();
-        for (LoginController.RegionNode root: roots ) {
+        for (RegionNode root: roots ) {
             trees.add(printfTree(root));
         }
         return trees;
@@ -56,7 +56,7 @@ public class RegionTree {
     }
 
 
-    private Map<String, Object> printfTree(LoginController.RegionNode node){
+    private Map<String, Object> printfTree(RegionNode node){
         if(node.getChilds().isEmpty()){
             Map<String, Object> jsonMap = new HashMap<>();
             jsonMap.put("id" , node.getSelf().getId());
@@ -66,9 +66,9 @@ public class RegionTree {
 
         } else {
             Map<String, Object> jsonMap = new HashMap<>();
-            List<LoginController.RegionNode> childs = node.getChilds();
+            List<RegionNode> childs = node.getChilds();
             LinkedList<Map<String, Object>> array = new LinkedList<>();
-            for (LoginController.RegionNode child: childs ) {
+            for (RegionNode child: childs ) {
                 array.add(printfTree(child));
             }
             jsonMap.put(node.getSelf().getName(), array);

@@ -1,8 +1,8 @@
 package com.victoria.xshop.project.user.service.impl;
 
 import com.victoria.xshop.common.tree.RegionTree;
+import com.victoria.xshop.project.user.bean.po.Region;
 import com.victoria.xshop.project.user.dao.RegionDao;
-import com.victoria.xshop.project.user.model.Region;
 import com.victoria.xshop.project.user.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,6 @@ package com.victoria.xshop.project.user.controller;
 
 
 import com.victoria.xshop.framework.aspectj.lang.annotation.SysLog;
-import com.victoria.xshop.project.user.model.Region;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -61,38 +60,4 @@ public class LoginController {
         return "ok";
     }
 
-    public static class RegionNode {
-
-        private RegionNode parent;
-        private Region self;
-        private List<RegionNode> childs = new LinkedList<>();
-
-        public RegionNode(Region self) {
-            this.self = self;
-        }
-
-        public Region getSelf() {
-            return self;
-        }
-
-        public void setSelf(Region self) {
-            this.self = self;
-        }
-
-        public RegionNode getParent() {
-            return parent;
-        }
-
-        public void setParent(RegionNode parent) {
-            this.parent = parent;
-        }
-
-        public List<RegionNode> getChilds() {
-            return childs;
-        }
-
-        public void setChilds(List<RegionNode> childs) {
-            this.childs = childs;
-        }
-    }
 }

@@ -2,8 +2,8 @@ package com.victoria.xshop.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
+import com.victoria.xshop.project.user.bean.po.User;
 import org.junit.Test;
-import com.victoria.xshop.project.user.model.User;
 
 import java.util.Date;
 

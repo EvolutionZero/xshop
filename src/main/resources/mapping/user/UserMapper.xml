@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.victoria.xshop.project.user.dao.UserDao" >
 
-    <resultMap id="UserBaseResultMap" type="com.victoria.xshop.project.user.model.User" >
+    <resultMap id="UserBaseResultMap" type="com.victoria.xshop.project.user.bean.po.User" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
@@ -27,20 +27,20 @@
     <select id="selectUserByPrimaryKey" resultMap="UserBaseResultMap" parameterType="java.lang.Long" >
         select 
         <include refid="User_Base_Column_List" />
-        from xshop_user
+        from common_user
         where id = #{id,jdbcType=BIGINT}
     </select>
 
     <delete id="deleteUserByPrimaryKey" parameterType="java.lang.Long" >
-        delete from xshop_user
+        delete from common_user
         where id = #{id,jdbcType=BIGINT}
     </delete>
 
-    <insert id="insertUserSelective" parameterType="com.victoria.xshop.project.user.model.User" >
+    <insert id="insertUserSelective" parameterType="com.victoria.xshop.project.user.bean.po.User" >
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into xshop_user
+        insert into common_user
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="username != null" >
                 username,
@@ -125,8 +125,8 @@
         </trim>
     </insert>
 
-    <update id="updateUserByPrimaryKeySelective" parameterType="com.victoria.xshop.project.user.model.User" >
-        update xshop_user
+    <update id="updateUserByPrimaryKeySelective" parameterType="com.victoria.xshop.project.user.bean.po.User" >
+        update common_user
         <set >
             <if test="username != null" >
                 username = #{username,jdbcType=VARCHAR},

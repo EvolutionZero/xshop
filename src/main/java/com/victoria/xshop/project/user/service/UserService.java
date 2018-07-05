@@ -1,6 +1,7 @@
 package com.victoria.xshop.project.user.service;
 
-import  com.victoria.xshop.project.user.model.User;
+
+import com.victoria.xshop.project.user.bean.po.User;
 
 public interface UserService {
 	

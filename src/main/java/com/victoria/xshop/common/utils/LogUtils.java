@@ -2,7 +2,7 @@ package com.victoria.xshop.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.victoria.xshop.framework.aspectj.lang.annotation.SysLog;
-import com.victoria.xshop.project.user.model.User;
+import com.victoria.xshop.project.user.bean.po.User;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package com.victoria.xshop.framework.shiro.realm;
 
-import com.victoria.xshop.project.user.model.User;
+import com.victoria.xshop.project.user.bean.po.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;

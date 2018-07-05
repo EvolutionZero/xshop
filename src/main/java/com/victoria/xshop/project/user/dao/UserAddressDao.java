@@ -2,14 +2,13 @@
  * @ClassName UserAddressDao
  * @Description 
  * @version 1.0
- * @Date 2018-06-27 22:58:42
+ * @Date 2018-07-05 15:26:03
  */
 package com.victoria.xshop.project.user.dao;
-import com.victoria.xshop.project.user.model.UserAddress;
+
+import com.victoria.xshop.project.user.bean.po.UserAddress;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository
 @Mapper

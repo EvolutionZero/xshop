@@ -2,9 +2,9 @@
  * @ClassName User
  * @Description 
  * @version 1.0
- * @Date 2018-07-05 10:10:53
+ * @Date 2018-07-05 15:26:03
  */
-package com.victoria.xshop.project.user.model;
+package com.victoria.xshop.project.user.bean.po;
 
 import java.util.Date;
 

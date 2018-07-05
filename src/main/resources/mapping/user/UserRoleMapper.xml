@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.victoria.xshop.project.user.dao.UserRoleDao" >
+
+    <resultMap id="UserRoleBaseResultMap" type="com.victoria.xshop.project.user.bean.po.UserRoleKey" >
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    </resultMap>
+
+    <delete id="deleteUserRoleByPrimaryKey" parameterType="com.victoria.xshop.project.user.bean.po.UserRoleKey" >
+        delete from common_user_role
+        where user_id = #{userId,jdbcType=INTEGER}
+          and role_id = #{roleId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertUserRoleSelective" parameterType="com.victoria.xshop.project.user.bean.po.UserRoleKey" >
+        insert into common_user_role
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                user_id,
+            </if>
+            <if test="roleId != null" >
+                role_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null" >
+                #{roleId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>

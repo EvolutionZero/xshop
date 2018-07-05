@@ -1,7 +1,7 @@
 package com.victoria.xshop.project.user.controller;
 
 
-import com.victoria.xshop.project.user.model.UserAddress;
+import com.victoria.xshop.project.user.bean.po.UserAddress;
 import com.victoria.xshop.project.user.service.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

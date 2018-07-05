@@ -1,6 +1,6 @@
 package com.victoria.xshop.project.user.controller;
 
-import com.victoria.xshop.project.user.model.Region;
+import com.victoria.xshop.project.user.bean.po.Region;
 import com.victoria.xshop.project.user.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

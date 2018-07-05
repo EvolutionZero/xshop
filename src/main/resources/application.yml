@@ -56,7 +56,7 @@ spring:
 
 mybatis:
   config-locations: classpath:mybatis-config.xml
-  mapper-locations: classpath:mapping/*.xml
+  mapper-locations: classpath:mapping/**/*.xml
 
 
 #pagehelper分页插件

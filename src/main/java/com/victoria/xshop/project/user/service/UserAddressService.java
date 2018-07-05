@@ -1,7 +1,7 @@
 package com.victoria.xshop.project.user.service;
 
 
-import com.victoria.xshop.project.user.model.UserAddress;
+import com.victoria.xshop.project.user.bean.po.UserAddress;
 
 public interface UserAddressService {
 	

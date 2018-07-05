@@ -2,15 +2,15 @@
  * @ClassName RegionDao
  * @Description 
  * @version 1.0
- * @Date 2018-06-27 22:58:42
+ * @Date 2018-07-05 15:26:03
  */
 package com.victoria.xshop.project.user.dao;
+
+import com.victoria.xshop.project.user.bean.po.Region;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import com.victoria.xshop.project.user.model.Region;
-
 
 import java.util.List;
 
