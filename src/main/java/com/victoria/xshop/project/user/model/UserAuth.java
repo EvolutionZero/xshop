@@ -2,17 +2,12 @@
  * @ClassName UserAuth
  * @Description 
  * @version 1.0
- * @Date 2018-06-27 23:21:14
+ * @Date 2018-07-05 10:10:53
  */
-package com.victoria.xshop.model;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+package com.victoria.xshop.project.user.model;
 
 import java.util.Date;
 
-@Repository
-@Mapper
 public class UserAuth {
     /**
      * @Fields id 

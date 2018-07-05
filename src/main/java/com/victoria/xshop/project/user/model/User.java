@@ -2,16 +2,12 @@
  * @ClassName User
  * @Description 
  * @version 1.0
- * @String 2018-06-27 23:21:14
+ * @Date 2018-07-05 10:10:53
  */
-package com.victoria.xshop.model;
+package com.victoria.xshop.project.user.model;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+import java.util.Date;
 
-
-@Repository
-@Mapper
 public class User {
     /**
      * @Fields id 
@@ -32,15 +28,15 @@ public class User {
     /**
      * @Fields birthday 
      */
-    private String birthday;
+    private Date birthday;
     /**
      * @Fields registerTime 
      */
-    private String registerTime;
+    private Date registerTime;
     /**
      * @Fields lastLoginTime 
      */
-    private String lastLoginTime;
+    private Date lastLoginTime;
     /**
      * @Fields lastLoginIp 
      */
@@ -48,7 +44,7 @@ public class User {
     /**
      * @Fields userAuthId 
      */
-    private Integer userAuthId;
+    private Byte userAuthId;
     /**
      * @Fields nickname 
      */
@@ -102,27 +98,27 @@ public class User {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
-    public String getRegisterTime() {
+    public Date getRegisterTime() {
         return registerTime;
     }
 
-    public void setRegisterTime(String registerTime) {
+    public void setRegisterTime(Date registerTime) {
         this.registerTime = registerTime;
     }
 
-    public String getLastLoginTime() {
+    public Date getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(String lastLoginTime) {
+    public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
@@ -134,11 +130,11 @@ public class User {
         this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public Integer getUserAuthId() {
+    public Byte getUserAuthId() {
         return userAuthId;
     }
 
-    public void setUserAuthId(Integer userAuthId) {
+    public void setUserAuthId(Byte userAuthId) {
         this.userAuthId = userAuthId;
     }
 

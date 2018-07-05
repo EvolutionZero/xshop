@@ -2,9 +2,9 @@
  * @ClassName Region
  * @Description 
  * @version 1.0
- * @Date 2018-06-28 02:04:37
+ * @Date 2018-07-05 10:10:53
  */
-package com.victoria.xshop.model;
+package com.victoria.xshop.project.user.model;
 
 public class Region {
     /**

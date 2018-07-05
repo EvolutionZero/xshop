@@ -2,15 +2,10 @@
  * @ClassName UserAddress
  * @Description 
  * @version 1.0
- * @Date 2018-06-27 23:21:14
+ * @Date 2018-07-05 10:10:53
  */
-package com.victoria.xshop.model;
+package com.victoria.xshop.project.user.model;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
-@Repository
-@Mapper
 public class UserAddress {
     /**
      * @Fields id 
@@ -20,7 +15,6 @@ public class UserAddress {
      * @Fields name 
      */
     private String name;
-
     /**
      * @Fields userId 
      */
@@ -133,36 +127,4 @@ public class UserAddress {
     public void setIsDefault(Integer isDefault) {
         this.isDefault = isDefault;
     }
-
-    @Override
-    public String toString() {
-        return "UserAddress{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", userId=" + userId +
-                ", countryId=" + countryId +
-                ", provinceId=" + provinceId +
-                ", cityId=" + cityId +
-                ", districtId=" + districtId +
-                ", address='" + address + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", isDefault=" + isDefault +
-                '}';
-    }
-
-    public static void main(String[] args){
-        UserAddress userAddress = new UserAddress();
-        userAddress.setUserId(1L);
-        userAddress.setCountryId(1);
-        userAddress.setProvinceId(20);
-        userAddress.setCityId(231);
-        userAddress.setDistrictId(2389);
-        userAddress.setName("home");
-        userAddress.setAddress("Nanzhou Garden Zone A");
-        userAddress.setMobile("18825000000");
-        userAddress.setIsDefault(0);
-        System.out.println(userAddress);
-    }
-
-
 }

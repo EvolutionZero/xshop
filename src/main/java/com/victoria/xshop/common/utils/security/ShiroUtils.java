@@ -2,7 +2,7 @@ package com.victoria.xshop.common.utils.security;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import com.victoria.xshop.model.User;
+import com.victoria.xshop.project.user.model.User;
 
 /**
  * shiro 工具类
