@@ -2,7 +2,7 @@
  * @ClassName Auth
  * @Description 
  * @version 1.0
- * @Date 2018-07-05 15:26:03
+ * @Date 2018-07-08 14:55:35
  */
 package com.victoria.xshop.project.user.bean.po;
 
@@ -10,39 +10,39 @@ import java.util.Date;
 
 public class Auth {
     /**
-     * @Fields authId 权限ID
+     * @Fields authId 
      */
     private Integer authId;
     /**
-     * @Fields authName 权限名称
+     * @Fields authName 
      */
     private String authName;
     /**
-     * @Fields orderNum 显示顺序
+     * @Fields orderNum 
      */
     private Integer orderNum;
     /**
-     * @Fields perms 权限标识
+     * @Fields perms 
      */
     private String perms;
     /**
-     * @Fields createBy 创建者
+     * @Fields createBy 
      */
     private String createBy;
     /**
-     * @Fields createTime 创建时间
+     * @Fields createTime 
      */
     private Date createTime;
     /**
-     * @Fields updateBy 更新者
+     * @Fields updateBy 
      */
     private String updateBy;
     /**
-     * @Fields updateTime 更新时间
+     * @Fields updateTime 
      */
     private Date updateTime;
     /**
-     * @Fields remark 备注
+     * @Fields remark 
      */
     private String remark;
 

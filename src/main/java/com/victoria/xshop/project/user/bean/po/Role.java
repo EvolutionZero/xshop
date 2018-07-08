@@ -2,7 +2,7 @@
  * @ClassName Role
  * @Description 
  * @version 1.0
- * @Date 2018-07-05 15:26:03
+ * @Date 2018-07-08 14:55:35
  */
 package com.victoria.xshop.project.user.bean.po;
 
@@ -10,43 +10,43 @@ import java.util.Date;
 
 public class Role {
     /**
-     * @Fields roleId 角色ID
+     * @Fields roleId 
      */
     private Integer roleId;
     /**
-     * @Fields roleName 角色名称
+     * @Fields roleName 
      */
     private String roleName;
     /**
-     * @Fields roleKey 角色权限字符串
+     * @Fields roleKey 
      */
     private String roleKey;
     /**
-     * @Fields roleSort 显示顺序
+     * @Fields roleSort 
      */
     private Integer roleSort;
     /**
-     * @Fields status 角色状态:0正常,1禁用
+     * @Fields status 
      */
     private Integer status;
     /**
-     * @Fields createBy 创建者
+     * @Fields createBy 
      */
     private String createBy;
     /**
-     * @Fields createTime 创建时间
+     * @Fields createTime 
      */
     private Date createTime;
     /**
-     * @Fields updateBy 更新者
+     * @Fields updateBy 
      */
     private String updateBy;
     /**
-     * @Fields updateTime 更新时间
+     * @Fields updateTime 
      */
     private Date updateTime;
     /**
-     * @Fields remark 备注
+     * @Fields remark 
      */
     private String remark;
 

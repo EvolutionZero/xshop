@@ -2,7 +2,7 @@
  * @ClassName UserAddress
  * @Description 
  * @version 1.0
- * @Date 2018-07-05 15:26:03
+ * @Date 2018-07-08 14:55:35
  */
 package com.victoria.xshop.project.user.bean.po;
 
