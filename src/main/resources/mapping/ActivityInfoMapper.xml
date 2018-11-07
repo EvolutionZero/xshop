@@ -36,7 +36,7 @@
     </sql>
 
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select 
+        select
         <include refid="Base_Column_List" />
         from <include refid="table" />
         where id = #{id,jdbcType=INTEGER}
@@ -237,7 +237,7 @@
     </update>
 
     <select id="list" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" resultMap="BaseResultMap" >
-        select 
+        select
         <include refid="Base_Column_List" />
         from <include refid="table" />
         <where >
@@ -305,6 +305,7 @@
     </select>
 
     <select id="count" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" resultType="java.lang.Integer" >
+        select count(1)
         from <include refid="table" />
         <where >
             <if test="id != null" >
