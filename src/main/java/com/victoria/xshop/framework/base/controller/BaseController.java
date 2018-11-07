@@ -1,15 +1,15 @@
-package com.victoria.xshop.project.goods.service;
+package com.victoria.xshop.framework.base.controller;
 
 
 import java.util.List;
 
-public interface BaseService<E> {
+public interface BaseController<E> {
     /**
      * @Title save
      * @param record
      * @return int
      */
-    int save(E record);
+    E save(E record);
 
     /**
      * @Title updateById
@@ -37,12 +37,26 @@ public interface BaseService<E> {
      * @param record
      * @return E>
      */
-    List<E> list(E record);
+    List<E> listByPost(E record);
+
+    /**
+     * @Title list
+     * @param record
+     * @return E>
+     */
+    List<E> listByGet(E record);
 
     /**
      * @Title count
      * @param record
      * @return int
      */
-    int count(E record);
+    int countByPost(E record);
+
+    /**
+     * @Title count
+     * @param record
+     * @return int
+     */
+    int countByGet(E record);
 }

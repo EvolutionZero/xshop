@@ -1,12 +1,12 @@
-package com.victoria.xshop.project.goods.service.impl;
+package com.victoria.xshop.framework.base.service.impl;
 
-import com.victoria.xshop.project.goods.mapper.BaseMapper;
-import com.victoria.xshop.project.goods.service.BaseService;
+import com.victoria.xshop.framework.base.mapper.BaseMapper;
+import com.victoria.xshop.framework.base.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class BaseServiceImpl<M extends BaseMapper<E> , E> implements BaseService<E> {
+public class BaseServiceImpl<M extends BaseMapper<E>, E> implements BaseService<E> {
 
     @Autowired
     private M mapper;

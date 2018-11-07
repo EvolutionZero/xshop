@@ -1,15 +1,15 @@
-package com.victoria.xshop.project.goods.controller;
+package com.victoria.xshop.framework.base.mapper;
 
 
 import java.util.List;
 
-public interface BaseController<E> {
+public interface BaseMapper<E> {
     /**
      * @Title save
      * @param record
      * @return int
      */
-    E save(E record);
+    int save(E record);
 
     /**
      * @Title updateById
@@ -37,26 +37,12 @@ public interface BaseController<E> {
      * @param record
      * @return E>
      */
-    List<E> listByPost(E record);
-
-    /**
-     * @Title list
-     * @param record
-     * @return E>
-     */
-    List<E> listByGet(E record);
+    List<E> list(E record);
 
     /**
      * @Title count
      * @param record
      * @return int
      */
-    int countByPost(E record);
-
-    /**
-     * @Title count
-     * @param record
-     * @return int
-     */
-    int countByGet(E record);
+    int count(E record);
 }

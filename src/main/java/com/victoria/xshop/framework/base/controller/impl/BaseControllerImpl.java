@@ -1,12 +1,13 @@
-package com.victoria.xshop.project.goods.controller;
+package com.victoria.xshop.framework.base.controller.impl;
 
-import com.victoria.xshop.project.goods.service.BaseService;
+import com.victoria.xshop.framework.base.controller.BaseController;
+import com.victoria.xshop.framework.base.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public class BaseControllerImpl<S extends BaseService<E> , E> implements BaseController<E> {
+public class BaseControllerImpl<S extends BaseService<E>, E> implements BaseController<E> {
 
     @Autowired
     private S service;

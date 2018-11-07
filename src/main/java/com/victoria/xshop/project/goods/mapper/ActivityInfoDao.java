@@ -6,9 +6,10 @@
  */
 package com.victoria.xshop.project.goods.mapper;
 
+import com.victoria.xshop.framework.base.mapper.BaseMapper;
 import com.victoria.xshop.project.goods.model.entity.ActivityInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface ActivityInfoDao extends BaseMapper<ActivityInfo>{
+public interface ActivityInfoDao extends BaseMapper<ActivityInfo> {
 }
