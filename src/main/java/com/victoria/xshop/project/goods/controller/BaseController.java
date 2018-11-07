@@ -9,7 +9,7 @@ public interface BaseController<E> {
      * @param record
      * @return int
      */
-    int save(E record);
+    E save(E record);
 
     /**
      * @Title updateById

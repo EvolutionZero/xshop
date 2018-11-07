@@ -14,12 +14,15 @@ public class BaseControllerImpl<S extends BaseService<E> , E> implements BaseCon
     @Override
     @PostMapping("/save")
     @ResponseBody
-    public int save(E record) {
-        return service.save(record);
+    public E save(@RequestBody E record) {
+        service.save(record);
+        return record;
     }
 
     @Override
-    public int updateById(E record) {
+    @PostMapping("/update")
+    @ResponseBody
+    public int updateById(@RequestBody E record) {
         return service.updateById(record);
     }
 
@@ -31,7 +34,9 @@ public class BaseControllerImpl<S extends BaseService<E> , E> implements BaseCon
     }
 
     @Override
-    public int deleteById(Integer id) {
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    public int deleteById(@PathVariable Integer id) {
         return service.deleteById(id);
     }
 
@@ -62,4 +67,5 @@ public class BaseControllerImpl<S extends BaseService<E> , E> implements BaseCon
     public int countByGet(E record) {
         return service.count(record);
     }
+
 }
