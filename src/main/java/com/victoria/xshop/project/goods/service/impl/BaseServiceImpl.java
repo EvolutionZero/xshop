@@ -2,40 +2,42 @@ package com.victoria.xshop.project.goods.service.impl;
 
 import com.victoria.xshop.project.goods.mapper.BaseMapper;
 import com.victoria.xshop.project.goods.service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public abstract class BaseServiceImpl<E> implements BaseService<E> {
+public class BaseServiceImpl<M extends BaseMapper<E> , E> implements BaseService<E> {
 
-    protected abstract BaseMapper<E> getMapper();
+    @Autowired
+    private M mapper;
 
     @Override
     public int save(E record) {
-        return getMapper().save(record);
+        return mapper.save(record);
     }
 
     @Override
     public int updateById(E record) {
-        return getMapper().updateById(record);
+        return mapper.updateById(record);
     }
 
     @Override
     public E findById(Integer id) {
-        return getMapper().findById(id);
+        return mapper.findById(id);
     }
 
     @Override
     public int deleteById(Integer id) {
-        return getMapper().deleteById(id);
+        return mapper.deleteById(id);
     }
 
     @Override
     public List<E> list(E record) {
-        return getMapper().list(record);
+        return mapper.list(record);
     }
 
     @Override
     public int count(E record) {
-        return getMapper().count(record);
+        return mapper.count(record);
     }
 }
