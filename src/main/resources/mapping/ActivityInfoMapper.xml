@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.victoria.xshop.project.goods.mapper.ActivityInfoDao" >
+
+    <resultMap id="BaseResultMap" type="com.victoria.xshop.project.goods.model.entity.ActivityInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
+        <result column="app_id" property="appId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="qrcode_url" property="qrcodeUrl" jdbcType="VARCHAR" />
+        <result column="cost_points" property="costPoints" jdbcType="INTEGER" />
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+        <result column="level_limit_flag" property="levelLimitFlag" jdbcType="INTEGER" />
+        <result column="level_limit_code" property="levelLimitCode" jdbcType="VARCHAR" />
+        <result column="level_limit_name" property="levelLimitName" jdbcType="VARCHAR" />
+        <result column="extras" property="extras" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="setting_flag" property="settingFlag" jdbcType="TINYINT" />
+        <result column="rule" property="rule" jdbcType="VARCHAR" />
+        <result column="memo" property="memo" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, seller_id, app_id, name, type, url, qrcode_url, cost_points, start_time, end_time, 
+        level_limit_flag, level_limit_code, level_limit_name, extras, status, setting_flag, 
+        rule, memo, create_time, update_time
+    </sql>
+
+    <sql id="table" >
+        scrm_activity_info
+    </sql>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="table" />
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.Integer" >
+        delete from <include refid="table" />
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="save" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" >
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="table" />
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="sellerId != null" >
+                seller_id,
+            </if>
+            <if test="appId != null" >
+                app_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="url != null" >
+                url,
+            </if>
+            <if test="qrcodeUrl != null" >
+                qrcode_url,
+            </if>
+            <if test="costPoints != null" >
+                cost_points,
+            </if>
+            <if test="startTime != null" >
+                start_time,
+            </if>
+            <if test="endTime != null" >
+                end_time,
+            </if>
+            <if test="levelLimitFlag != null" >
+                level_limit_flag,
+            </if>
+            <if test="levelLimitCode != null" >
+                level_limit_code,
+            </if>
+            <if test="levelLimitName != null" >
+                level_limit_name,
+            </if>
+            <if test="extras != null" >
+                extras,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="settingFlag != null" >
+                setting_flag,
+            </if>
+            <if test="rule != null" >
+                rule,
+            </if>
+            <if test="memo != null" >
+                memo,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="sellerId != null" >
+                #{sellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="appId != null" >
+                #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="qrcodeUrl != null" >
+                #{qrcodeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="costPoints != null" >
+                #{costPoints,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null" >
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null" >
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="levelLimitFlag != null" >
+                #{levelLimitFlag,jdbcType=INTEGER},
+            </if>
+            <if test="levelLimitCode != null" >
+                #{levelLimitCode,jdbcType=VARCHAR},
+            </if>
+            <if test="levelLimitName != null" >
+                #{levelLimitName,jdbcType=VARCHAR},
+            </if>
+            <if test="extras != null" >
+                #{extras,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="settingFlag != null" >
+                #{settingFlag,jdbcType=TINYINT},
+            </if>
+            <if test="rule != null" >
+                #{rule,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null" >
+                #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" >
+        update <include refid="table" />
+        <set >
+            <if test="sellerId != null" >
+                seller_id = #{sellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="appId != null" >
+                app_id = #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="qrcodeUrl != null" >
+                qrcode_url = #{qrcodeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="costPoints != null" >
+                cost_points = #{costPoints,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null" >
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null" >
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="levelLimitFlag != null" >
+                level_limit_flag = #{levelLimitFlag,jdbcType=INTEGER},
+            </if>
+            <if test="levelLimitCode != null" >
+                level_limit_code = #{levelLimitCode,jdbcType=VARCHAR},
+            </if>
+            <if test="levelLimitName != null" >
+                level_limit_name = #{levelLimitName,jdbcType=VARCHAR},
+            </if>
+            <if test="extras != null" >
+                extras = #{extras,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="settingFlag != null" >
+                setting_flag = #{settingFlag,jdbcType=TINYINT},
+            </if>
+            <if test="rule != null" >
+                rule = #{rule,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null" >
+                memo = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="list" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="table" />
+        <where >
+            <if test="id != null" >
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="sellerId != null" >
+                and seller_id = #{sellerId,jdbcType=VARCHAR}
+            </if>
+            <if test="appId != null" >
+                and app_id = #{appId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null" >
+                and name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null" >
+                and type = #{type,jdbcType=INTEGER}
+            </if>
+            <if test="url != null" >
+                and url = #{url,jdbcType=VARCHAR}
+            </if>
+            <if test="qrcodeUrl != null" >
+                and qrcode_url = #{qrcodeUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="costPoints != null" >
+                and cost_points = #{costPoints,jdbcType=INTEGER}
+            </if>
+            <if test="startTime != null" >
+                and start_time = #{startTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endTime != null" >
+                and end_time = #{endTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="levelLimitFlag != null" >
+                and level_limit_flag = #{levelLimitFlag,jdbcType=INTEGER}
+            </if>
+            <if test="levelLimitCode != null" >
+                and level_limit_code = #{levelLimitCode,jdbcType=VARCHAR}
+            </if>
+            <if test="levelLimitName != null" >
+                and level_limit_name = #{levelLimitName,jdbcType=VARCHAR}
+            </if>
+            <if test="extras != null" >
+                and extras = #{extras,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null" >
+                and status = #{status,jdbcType=TINYINT}
+            </if>
+            <if test="settingFlag != null" >
+                and setting_flag = #{settingFlag,jdbcType=TINYINT}
+            </if>
+            <if test="rule != null" >
+                and rule = #{rule,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null" >
+                and memo = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null" >
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null" >
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+    <select id="count" parameterType="com.victoria.xshop.project.goods.model.entity.ActivityInfo" resultType="java.lang.Integer" >
+        select count(1)
+        from <include refid="table" />
+        <where >
+            <if test="id != null" >
+                and id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="sellerId != null" >
+                and seller_id = #{sellerId,jdbcType=VARCHAR}
+            </if>
+            <if test="appId != null" >
+                and app_id = #{appId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null" >
+                and name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null" >
+                and type = #{type,jdbcType=INTEGER}
+            </if>
+            <if test="url != null" >
+                and url = #{url,jdbcType=VARCHAR}
+            </if>
+            <if test="qrcodeUrl != null" >
+                and qrcode_url = #{qrcodeUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="costPoints != null" >
+                and cost_points = #{costPoints,jdbcType=INTEGER}
+            </if>
+            <if test="startTime != null" >
+                and start_time = #{startTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endTime != null" >
+                and end_time = #{endTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="levelLimitFlag != null" >
+                and level_limit_flag = #{levelLimitFlag,jdbcType=INTEGER}
+            </if>
+            <if test="levelLimitCode != null" >
+                and level_limit_code = #{levelLimitCode,jdbcType=VARCHAR}
+            </if>
+            <if test="levelLimitName != null" >
+                and level_limit_name = #{levelLimitName,jdbcType=VARCHAR}
+            </if>
+            <if test="extras != null" >
+                and extras = #{extras,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null" >
+                and status = #{status,jdbcType=TINYINT}
+            </if>
+            <if test="settingFlag != null" >
+                and setting_flag = #{settingFlag,jdbcType=TINYINT}
+            </if>
+            <if test="rule != null" >
+                and rule = #{rule,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null" >
+                and memo = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null" >
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateTime != null" >
+                and update_time = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>
