@@ -5,7 +5,6 @@ import com.victoria.xshop.common.utils.LogUtils;
 import com.victoria.xshop.common.utils.ServletUtils;
 import com.victoria.xshop.common.utils.security.ShiroUtils;
 import com.victoria.xshop.framework.aspectj.lang.annotation.SysLog;
-import com.victoria.xshop.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
